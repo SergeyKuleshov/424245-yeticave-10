@@ -6,6 +6,9 @@
 *.pdf
 *.psd
 *.sublime*
+.editconfig
+.gitattributes
+.gitignore
 Thumbs.db
 vendor
 uploads/*
