@@ -21,6 +21,8 @@
 
                 <?php foreach ($advertisement as $key => $value): ?>
 
+                    <?php $expiration_date = get_dt_range($value["expiration_date"]); ?>
+
                     <li class="lots__item lot">
                         <div class="lot__image">
                             <img src="<?= htmlspecialchars($value["url_picture"]); ?>" width="350" height="260" alt="">
@@ -33,10 +35,10 @@
                                     <span class="lot__amount">Стартовая цена</span>
                                     <span class="lot__cost"><?= formatting_price($value["price"]); ?></span>
                                 </div>
-                                <div class="lot__timer timer <?php if (get_dt_range($value["expiration_date"])["hours"] < 1): ?>timer--finishing<?php endif?>">
-                                    <?=get_dt_range($value["expiration_date"])["hours"];?>
-                                    <?=get_dt_range($value["expiration_date"])["colon"];?>
-                                    <?=get_dt_range($value["expiration_date"])["minutes"];?>
+                                <div class="lot__timer timer <?php if ($expiration_date["hours"] < 1): ?>timer--finishing<?php endif?>">
+                                    <?= $expiration_date["hours"]; ?>
+                                    <?= $expiration_date["colon"]; ?>
+                                    <?= $expiration_date["minutes"]; ?>
                                 </div>
                             </div>
                         </div>
