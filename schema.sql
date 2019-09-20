@@ -11,7 +11,7 @@ USE yeticave;
 CREATE TABLE categories(
 	id INT(11) AUTO_INCREMENT PRIMARY KEY,
 	title VARCHAR(128) NOT NULL,
-	char_code VARCHAR(64) NOT NULL,
+	char_code VARCHAR(64) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 
