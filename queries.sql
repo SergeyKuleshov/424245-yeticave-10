@@ -138,8 +138,7 @@ SELECT l.title, start_price, picture_path, offer_price, c.title
 FROM lots
 JOIN categories c ON l.cat_id = c.id
 JOIN bids b ON l.id = b.lot_id
-WHERE DATE(dt_end) < CURRENT_TIME
-AND DATE(dt_end) = CURRENT_DATE;
+WHERE DATE(dt_end) <= CURRENT_TIME;
 
 
 /*показать лот по его id.
