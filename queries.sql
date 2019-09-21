@@ -14,7 +14,7 @@ VALUES
 /*Пользователи*/
 INSERT INTO users
 (email, name, hashed_password, contacts_info)
-VALUE
+VALUES
 ("rudoi@mail.ru", "Антон Рудой", "a78dc786c5a7ab27", "89217779922"),
 ("smo@mail.ru", "Андрей Смородин", "a78ac234d5c2ab27", "89212343452");
 
@@ -23,7 +23,7 @@ VALUE
 /*Объявления*/
 INSERT INTO lots
 (title, description, picture_path, start_price, dt_end, bid_step, cat_id, user_id)
-VALUE
+VALUES
 ("2014 Rossignol District Snowboard", "Легендарный сноуборд Саломон", "img/lot-1.jpg", 10999, "2019-09-19 00:00:00", 500, 1, 1),
 ("DC Ply Mens 2016/2017 Snowboard", "Почти новый - катался пару раз", "img/lot-2.jpg", 159999, "2019-09-21 00:00:00", 2500, 1, 2),
 ("Крепления Union Contact Pro 2015 года размер L/XL", "Топовые крепления!", "img/lot-3.jpg", 8000, "2019-09-20 00:00:00", 500, 2, 1),
@@ -36,7 +36,7 @@ VALUE
 /*Ставки*/
 INSERT INTO bids
 (offer_price, lot_id, user_id)
-VALUE
+VALUES
 (10999, 1, 2),
 (164999, 2, 1);
 
@@ -51,7 +51,7 @@ SELECT title FROM categories;
 стартовую цену, ссылку на изображение,
 цену, название категории*/
 SELECT l.title, start_price, picture_path, offer_price, c.title
-FROM lots
+FROM lots l
 JOIN categories c ON l.cat_id = c.id
 JOIN bids b ON l.id = b.lot_id
 WHERE DATE(dt_end) <= CURRENT_TIME;
@@ -74,9 +74,7 @@ WHERE id = 1;
 
 
 /*получить список ставок для лота по его идентификатору с сортировкой по дате*/
-SELECT b.id, b.dt_add, offer_price
-FROM bids b
-JOIN lots l
-ON l.id = b.lot_id
+SELECT id, dt_add, offer_price
+FROM bids
 WHERE lot_id = 1
-ORDER BY b.dt_add;
+ORDER BY dt_add;
