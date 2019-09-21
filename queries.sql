@@ -1,128 +1,44 @@
 /*Заполняю таблицу категорий*/
 INSERT INTO categories
-SET title = "Доски и лыжи",
-    char_code = "boards";
-
-INSERT INTO categories
-SET title = "Крепления",
-    char_code = "attachment";
-
-INSERT INTO categories
-SET title = "Ботинки",
-    char_code = "boots";
-
-INSERT INTO categories
-SET title = "Одежда",
-    char_code = "clothing";
-
-INSERT INTO categories
-SET title = "Инструменты",
-    char_code = "tools";
-
-INSERT INTO categories
-SET title = "Разное",
-    char_code = "other";
+(title, char_code)
+VALUES
+("Доски и лыжи", "boards"),
+("Крепления", "attachment"),
+("Ботинки", "boots"),
+("Одежда", "clothing"),
+("Инструменты", "tools"),
+("Разное", "other");
 
 
 
 /*Пользователи*/
 INSERT INTO users
-SET dt_reg NOW(),
-    email = "rudoi@mail.ru",
-    name = "Антон Рудой",
-    hashed_password = "a78dc786c5a7ab27",
-    contacts_info = "89217779922";
-
-INSERT INTO users
-SET dt_reg NOW(),
-    email = "smo@mail.ru",
-    name = "Андрей Смородин",
-    hashed_password = "a78ac234d5c2ab27",
-    contacts_info = "89212343452";
+(email, name, hashed_password, contacts_info)
+VALUE
+("rudoi@mail.ru", "Антон Рудой", "a78dc786c5a7ab27", "89217779922"),
+("smo@mail.ru", "Андрей Смородин", "a78ac234d5c2ab27", "89212343452");
 
 
 
 /*Объявления*/
 INSERT INTO lots
-SET dt_add = NOW(),
-    title = "2014 Rossignol District Snowboard",
-    description = "Легендарный сноуборд Саломон",
-    picture_path = "img/lot-1.jpg",
-    start_price = "10999",
-    dt_end = "2019-09-19 00:00:00",
-    bid_step = "500",
-    cat_id = 1,
-    user_id = 1;
-
-INSERT INTO lots
-SET dt_add = NOW(),
-    title = "DC Ply Mens 2016/2017 Snowboard",
-    description = "Почти новый - катался пару раз. Для ценителей",
-    picture_path = "img/lot-2.jpg",
-    start_price = "159999",
-    dt_end = "2019-09-21 00:00:00",
-    bid_step = "2500",
-    cat_id = 1,
-    user_id = 2;
-
-INSERT INTO lots
-SET dt_add = NOW(),
-    title = "Крепления Union Contact Pro 2015 года размер L/XL",
-    description = "Топовые крепления!",
-    picture_path = "img/lot-3.jpg",
-    start_price = "8000",
-    dt_end = "2019-09-20 00:00:00",
-    bid_step = "500",
-    cat_id = 2,
-    user_id = 1;
-
-INSERT INTO lots
-SET dt_add = NOW(),
-    title = "Ботинки для сноуборда DC Mutiny Charocal",
-    description = "Очень удобные ботинки",
-    picture_path = "img/lot-4.jpg",
-    start_price = "10999",
-    dt_end = "2019-09-19 00:00:00",
-    bid_step = "500",
-    cat_id = 3,
-    user_id = 2;
-
-INSERT INTO lots
-SET dt_add = NOW(),
-    title = "Куртка для сноуборда DC Mutiny Charocal",
-    description = "Куртка с мембраной 10000/10000",
-    picture_path = "img/lot-5.jpg",
-    start_price = "7500",
-    dt_end = "2019-09-20 00:00:00",
-    bid_step = "500",
-    cat_id = 4,
-    user_id = 1;
-
-INSERT INTO lots
-SET dt_add = NOW(),
-    title = "Маска Oakley Canopy",
-    description = "С комплектом запасных линз",
-    picture_path = "img/lot-6.jpg",
-    start_price = "5400",
-    dt_end = "2019-09-21 00:00:00",
-    bid_step = "500",
-    cat_id = 6,
-    user_id = 2;
+(title, description, picture_path, start_price, dt_end, bid_step, cat_id, user_id)
+VALUE
+("2014 Rossignol District Snowboard", "Легендарный сноуборд Саломон", "img/lot-1.jpg", 10999, "2019-09-19 00:00:00", 500, 1, 1),
+("DC Ply Mens 2016/2017 Snowboard", "Почти новый - катался пару раз", "img/lot-2.jpg", 159999, "2019-09-21 00:00:00", 2500, 1, 2),
+("Крепления Union Contact Pro 2015 года размер L/XL", "Топовые крепления!", "img/lot-3.jpg", 8000, "2019-09-20 00:00:00", 500, 2, 1),
+("Ботинки для сноуборда DC Mutiny Charocal", "Очень удобные ботинки", "img/lot-4.jpg", 10999, "2019-09-19 00:00:00", 500, 3, 2),
+("Куртка для сноуборда DC Mutiny Charocal", "Куртка с мембраной 10000/10000", "img/lot-5.jpg", 7500, "2019-09-20 00:00:00", 500, 4, 1),
+("Маска Oakley Canopy", "С комплектом запасных линз", "img/lot-6.jpg", 5400, "2019-09-21 00:00:00",500, 6, 2);
 
 
 
 /*Ставки*/
 INSERT INTO bids
-SET dt_add = NOW(),
-    offer_price = 10999,
-    lot_id = 1,
-    user_id = 2;
-
-INSERT INTO bids
-SET dt_add = NOW(),
-    offer_price = 164999,
-    lot_id = 2,
-    user_id = 1;
+(offer_price, lot_id, user_id)
+VALUE
+(10999, 1, 2),
+(164999, 2, 1);
 
 
 
