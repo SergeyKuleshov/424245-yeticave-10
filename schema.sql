@@ -48,4 +48,4 @@ CREATE TABLE users(
 	name VARCHAR(128) NOT NULL,
 	hashed_password VARCHAR(128) NOT NULL,
 	contacts_info VARCHAR(128)
-) ENGINE InnoDB DEFAULT CHARSET = utf8;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
