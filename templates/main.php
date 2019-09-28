@@ -1,11 +1,11 @@
-<section class="promo">
+        <section class="promo">
             <h2 class="promo__title">Нужен стафф для катки?</h2>
             <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
             <ul class="promo__list">
 
                 <?php foreach ($categories as $val): ?>
 
-                    <li class="promo__item promo__item--boards">
+                    <li class="promo__item promo__<?= $val["char_code"] ?>">
                         <a class="promo__link" href="pages/all-lots.html"><?= htmlspecialchars($val["title"]) ?></a>
                     </li>
 
@@ -33,7 +33,7 @@
                             <div class="lot__state">
                                 <div class="lot__rate">
                                     <span class="lot__amount">Стартовая цена</span>
-                                    <span class="lot__cost"><?= formatting_price($value["price"]); ?></span>
+                                    <span class="lot__cost"><?php if ($value["price"]): ?> <?= formatting_price($value["price"]); ?> <?php else: ?> <?= formatting_price($value["start_price"]); ?> <?php endif; ?></span>
                                 </div>
                                 <div class="lot__timer timer <?php if ($expiration_date["hours"] < 1): ?>timer--finishing<?php endif?>">
                                     <?= $expiration_date["hours"]; ?>

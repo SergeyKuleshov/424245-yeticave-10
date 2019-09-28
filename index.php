@@ -19,7 +19,7 @@ if ($connect == false) {
     print("Ошибка подключения: " . mysqli_connect_error());
 }
 else {
-    $sql_cat = "SELECT title FROM categories";
+    $sql_cat = "SELECT title, char_code FROM categories";
 }
 
 $result = mysqli_query($connect, $sql_cat);
@@ -30,13 +30,50 @@ if ($result) {
 
 
 
-$sql_adv = "SELECT l.title, c.title category, offer_price price, picture_path url_picture, b.dt_add expiration_date FROM lots l JOIN categories c ON l.cat_id = c.id JOIN bids b ON l.id = b.lot_id";
 
-$result_adv = mysqli_connect($connect, $sql_adv);
+if ($connect == false) {
+    print("Ошибка подключения: " . mysqli_connect_error());
+}
+else {
+    $sql_adv = "SELECT l.title, c.title category, start_price, offer_price price, picture_path url_picture, l.dt_add expiration_date FROM lots l"
+    . " JOIN categories c ON l.cat_id = c.id"
+    . " LEFT JOIN bids b ON l.id = b.lot_id"
+    . " WHERE l.dt_add >= NOW()"
+    . " ORDER BY expiration_date DESC"
+    . " LIMIT 9";
+
+}
+//SELECT l.title, c.title category, offer_price price, picture_path url_picture, l.dt_add expiration_date FROM lots l
+//JOIN categories c ON l.cat_id = c.id LEFT JOIN bids b ON l.id = b.lot_id
+
+
+
+$result_adv = mysqli_query($connect, $sql_adv);
 
 if ($result_adv) {
     $advertisement = mysqli_fetch_all($result_adv, MYSQLI_ASSOC);
 }
+
+//$sql_adv = "SELECT l.title, c.title category, offer_price price, picture_path url_picture, b.dt_add expiration_date FROM lots l JOIN categories c ON l.cat_id = c.id JOIN bids b ON l.id = b.lot_id";
+//
+//$result_adv = mysqli_connect($connect, $sql_adv);
+//
+//if ($result_adv) {
+////    $advertisement = mysqli_fetch_all($result_adv, MYSQLI_ASSOC);
+//    $advertisement = "gjkexbkjcm";
+//
+//}
+
+
+
+//$categories = [
+//    "Доски и лыжи",
+//    "Крепления",
+//    "Ботинки",
+//    "Одежда",
+//    "Инструменты",
+//    "Разное"
+//];
 
 
 
